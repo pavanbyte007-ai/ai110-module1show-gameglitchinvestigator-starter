@@ -12,40 +12,32 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 Document at least 3 bugs you found. Add rows as needed.
 
-| Input | Expected Behavior | Actual Behavior | Console Output / Error |
-|-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+| Input               | Expected Behavior | Actual Behavior | Console Output / Error |
+|-------              |-------------------|----------|
+|Guess 69, secret 75  | Go Higher         | Go Lower         | None
+|Enter key after guess| Submit Guess      | Nothing Happens  | None                  |
+|change difficulty + submit guess| Show result| No result shown| None|
 
 ---
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
-- Give one example of an AI suggestion you did not accept as written (including what the AI suggested, why you rejected or changed it, and how you verified your version). It does not have to be a suggestion that was wrong: over-engineered, out of scope, harder to read, or a poor fit for this codebase all count.
+- Which AI tools did you use on this project (for Claude
+- I used AI coding assistants to inspect the code, explain the bugs, and suggest minimal fixes. One correct suggestion was moving check_guess into logic_utils.py and fixing the reversed high/low messages, which I verified by running the game and testing guesses above and below the secret number. I did not accept every suggested change because some suggestions involved changing unrelated behavior, so I kept the changes limited to the required hint logic and testing.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
-
+- I checked whether the bug was fixed by testing guesses both below and above the secret number. I also created a pytest test that checked both the outcome and the hint message for guesses of 69 and 80 when the secret was 75. The final pytest run collected 4 tests and passed them, showing that the high/low logic was working correctly. AI helped me create the regression test and understand what the test needed to verify.
 ---
 
 ## 4. What did you learn about Streamlit and state?
 
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+- I learned that Streamlit reruns the Python script when the user interacts with the application, such as clicking a button. Session state is used to keep important values, such as the secret number, attempts, and score, between those reruns. Without session state, those values could be reset every time the application reruns.
 
 ---
 
 ## 5. Looking ahead: your developer habits
 
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
-  - This could be a testing habit, a prompting strategy, or a way you used Git.
-- What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+- One habit I want to reuse is testing a bug with specific inputs before and after making a fix. Next time, I would also ask the AI to explain the existing code and propose a minimal change before allowing it to edit multiple files. This project showed me that AI-generated code can be useful, but I still need to review the changes and verify them with tests instead of assuming the AI is correct.
