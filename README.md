@@ -25,19 +25,26 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+## Document Your Experience
+
+During this project, I investigated several bugs in the number guessing game and used an AI coding assistant to help analyze the code. I first reproduced the bugs manually and recorded the expected and actual behavior.
+
+The main bug I fixed was the reversed HIGHER/LOWER hint. I also moved the `check_guess` function from `app.py` into `logic_utils.py` so the game logic could be tested separately from the Streamlit interface.
+
+I added regression tests for the game logic and ran `pytest` to verify the changes. All 4 tests passed.
+
+One important thing I learned was that AI suggestions still need to be reviewed and tested. I did not blindly accept every suggestion because some proposed changes were unrelated to the bugs I was investigating. The debugging process helped me understand the importance of reproducing a bug, making a small targeted change, and then testing the result.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+
+1. User starts the game and enters a guess.
+2. If the guess is lower than the secret number, the game displays "Go HIGHER!".
+3. If the guess is higher than the secret number, the game displays "Go LOWER!".
+4. The user continues entering guesses until the correct number is entered.
+5. When the correct guess is entered, the game displays the win message and the score updates.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
